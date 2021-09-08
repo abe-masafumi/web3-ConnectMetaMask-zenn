@@ -1,4 +1,6 @@
+
 const { ethers } = require("ethers");
+console.log(ethers);
 const initialize = () => {
     let accounts;
     const onboardButton = document.getElementById('connectButton');
@@ -43,6 +45,7 @@ const initialize = () => {
 
     const isMetaMaskInstalled = () => {
         const { ethereum } = window;
+        console.log(ethereum);
         return Boolean(ethereum && ethereum.isMetaMask);
     };
 
@@ -52,15 +55,24 @@ const initialize = () => {
                 method: 'eth_requestAccounts',
             })
             accounts = newAccounts;
+            console.log(accounts);
+
             accountsDiv.innerHTML = accounts;
             if (isMetaMaskConnected()) {
                 retrieveButton.disabled = false;
                 retrieveButton.onclick = onClickRetrieve;
                 storeButton.disabled = false;
                 storeButton.onclick = onClickStore;
+          
                 const provider = new ethers.providers.Web3Provider(window.ethereum);
+                console.log(provider);
+
                 const signer = provider.getSigner(0);
+                console.log(signer);
+
                 myContract = new ethers.Contract(ContractAddress, ContractAbi, signer);
+                console.log(myContract);
+
             }
         } catch (error) {
             console.error(error);

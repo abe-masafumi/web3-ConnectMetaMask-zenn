@@ -91,6 +91,8 @@ contract Message {
 ```js
 // Node.js
 // ethers.jsをインポートする
+// ここにはobjectが入る
+// 何に使うかわからんものばかりが入ってる（関数が入ってるようにも見える）
 const { ethers } = require("ethers");
 // 一つの関数にしたほうがいいってことか？
 const initialize = () => {
@@ -102,47 +104,29 @@ const initialize = () => {
     const inputMessage = document.getElementById('inputMessage');
     const accountsDiv = document.getElementById('accounts');
     let myContract;
-    //enter deployed contract abi
-    const ContractAbi = [
-        {
-            "inputs": [
-                {
-                    "internalType": "string",
-                    "name": "msg_in",
-                    "type": "string"
-                }
-            ],
-            "name": "store",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "retrieve",
-            "outputs": [
-                {
-                    "internalType": "string",
-                    "name": "",
-                    "type": "string"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        }
-    ];
+    //Remixで取得できるABIをコピぺ
+    const ContractAbi = ["オブジェクト"];
+    // Remixからデプロイしたコントラクトのアドレスをコピペ
     const ContractAddress = "0x***"; //enter deployed contract address
 
     const isMetaMaskConnected = () => accounts && accounts.length > 0
-
+    
+    メタマスクがインストールされているかチェック
     const isMetaMaskInstalled = () => {
+      // (ethereumにはobjectが入る)
+      // 取得できる情報一覧
+      // platform: "MacIntel"
+      // selectedAddress: "0xe7570a6f538f469自分のウォレットアドレス"
+      // isMetaMask: true
         const { ethereum } = window;
+        // windowが取得できたらMetaMaskがtrueかfalseか
         return Boolean(ethereum && ethereum.isMetaMask);
     };
 
     const onClickConnect = async () => {
         try {
             const newAccounts = await ethereum.request({
+              //戻り値  string[] -単一の16進数のイーサリアムアドレス文字列の配列
                 method: 'eth_requestAccounts',
             })
             accounts = newAccounts;
@@ -161,6 +145,7 @@ const initialize = () => {
                 //エーテルを送信し、ブロックチェーン内の状態を変更するために支払います。
                 //このためには、アカウント署名者が必要です...
                 const signer = provider.getSigner(0);//必須
+                // Remixでデプロイしたコントラクトの情報が取れる
                 myContract = new ethers.Contract(ContractAddress, ContractAbi, signer);
             }
         } catch (error) {
@@ -170,6 +155,7 @@ const initialize = () => {
 
     const onClickRetrieve = async () => {
         try {
+          // ブロックチェーン上のretrieve関数を実行
             let res = await myContract.retrieve();
             messageStatus.innerHTML = res;
         } catch (error) {
@@ -178,7 +164,9 @@ const initialize = () => {
     }
     const onClickStore = async () => {
         try {
+          // inputタグから値を取得
             let message = inputMessage.value;
+            // ブロックチェーン上のstore関数にmessegeを入れて実行
             myContract.store(message);
             messageStatus.innerHTML = 'Your message has been sent';
         } catch (error) {
@@ -187,9 +175,11 @@ const initialize = () => {
     }
 
     const MetaMaskClientCheck = () => {
+      // isMetaMaskInstalledがfalseの場合
         if (!isMetaMaskInstalled()) {
             onboardButton.innerText = 'Please install MetaMask';
         } else {
+      // isMetaMaskInstalledがfalseの場合
             onboardButton.innerText = 'Connect';
             onboardButton.onclick = onClickConnect;
             onboardButton.disabled = false;
@@ -199,6 +189,14 @@ const initialize = () => {
 };
 window.addEventListener('DOMContentLoaded', initialize)
 ```
+
+# node.jsサーバーの構築
+- node.jsでサーバーに繋ぐためにはmain.jsとserver.jsの編集が必要です。
+- 書き方はよくわかっていないので調べてから追記します。
+main.jsとserver.jsを参照してください
+
+
+
 
 ---
 # browserifyでビルド
