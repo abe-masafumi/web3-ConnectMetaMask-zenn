@@ -59,7 +59,7 @@ contract Message {
 
 # ブラウザ画面を作る
 - index.htmlファイルを編集
-```html
+```js
 <html>
 <head>
   <meta charset="UTF-8">
@@ -199,6 +199,7 @@ const initialize = () => {
 };
 window.addEventListener('DOMContentLoaded', initialize)
 ```
+
 ---
 # browserifyでビルド
 - browserifyでバンドルし、ブラウザで利用できるようにします。
