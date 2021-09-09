@@ -1,6 +1,8 @@
 # webサイトとMet Maskを繋げる
 <img src="home.png">
 
+
+> 参考資料:https://zenn.dev/zzz/articles/368367ec20aa42#browserify%E3%81%A7%E3%83%93%E3%83%AB%E3%83%89
 # webフロントエンド
 - metamask
 <!-- ウォレットアプリ。秘密鍵の管理、コントラクトへの署名を行う。 -->
