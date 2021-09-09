@@ -1,4 +1,5 @@
 # webサイトとMet Maskを繋げる
+<img src="home.png">
 
 # webフロントエンド
 - metamask
@@ -13,8 +14,8 @@
 - Remix
 <!-- Solidity(スマートコントラクトの記述言語)をコンパイル＆デプロイするための開発環境。ブラウザベースなのでインストール不要。メタマスクとも接続できるため、コントラクトを直接デプロイすることができる。 -->
 
-vscodeプロジェクトディレクトリでコマンドを実行
-このディレクトリ以下をnode.jsの配下にするぜ！
+> vscodeプロジェクトディレクトリでコマンドを実行  
+> このディレクトリ以下をnode.jsの配下にするぜ！  
 
 
 
@@ -28,7 +29,7 @@ public/
 ```
 ---
 # Remixを使ってスマートコントラクトのコンパイル＆デプロイ
-- Remixhttps://remix.ethereum.org/
+> Remix:https://remix.ethereum.org/
 > Remixにmessage.solファイルを作成する
 ```sol
 pragma solidity >=0.7.0 <0.8.0;
