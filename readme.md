@@ -29,8 +29,8 @@ public/
 ```
 ---
 # Remixを使ってスマートコントラクトのコンパイル＆デプロイ
-> Remix:https://remix.ethereum.org/
-> Remixにmessage.solファイルを作成する
+> Remix:https://remix.ethereum.org/  
+> Remixにmessage.solファイルを作成する  
 ```sol
 pragma solidity >=0.7.0 <0.8.0;
 
@@ -48,12 +48,12 @@ contract Message {
 }
 ```
 # SOLIDITY COMPILERのページ設定
-- 左のメニューでCOMPILERを使用バージョンと合わせる
-- Compile message.solを押すとコンパイルできる
+- 左のメニューで`COMPILER`を使用バージョンと合わせる
+- `Compile message.sol`を押すとコンパイルできる
 
 # DEPLOY & RUN TRANSACTIONSのページ設定
-- 左のメニューでENVIRONMENT選択項目でInjected Web3を選択すると接続しているネットワークにデプロイできる
-- Deployボタンを押すとnetwork上にcontractをデプロイできる
+- 左のメニューで`ENVIRONMENT`選択項目で`Injected Web3`を選択すると接続しているネットワークにデプロイできる
+- `Deploy`ボタンを押すとnetwork上にcontractをデプロイできる
 
 # デプロイまでできたら次へ
 ---
